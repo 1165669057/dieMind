@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">开放学习</string>
+    <string name="title_home">首页</string>
+    <string name="title_dashboard">消息</string>
+    <string name="title_notifications">我的</string>
+    <string name="title_buy">优购</string>
+
+    <string name="login_OpenMind">openMind</string>
+    <string name="login_hint_font">手机号/邮箱</string>
+    <string name="login_hint_pwd">密码</string>
+    <string name="login_text_forget">忘记密码</string>
+    <string name="login_text_register">用户注册</string>
+    <string name="login_serverText">服务条款</string>
+    <string name="login_text_login">登入</string>
+    <string name="title_activity_home">开放学习</string>
+</resources>

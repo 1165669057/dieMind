@@ -7,5 +7,10 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.administrator.testapp.controller.Home"
     tools:showIn="@layout/activity_home">
+   <android.support.v4.view.ViewPager
+       android:id="@+id/myMainViewPage"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
 
+   </android.support.v4.view.ViewPager>
 </android.support.constraint.ConstraintLayout>

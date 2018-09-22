@@ -38,7 +38,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     replaceFragment(R.id.myLayout2,new MyFragment1(),"tag2");
                     return true;
                 case R.id.navigation_dashboard:
-
                     return true;
                 case R.id.navigation_notifications:
                     return true;

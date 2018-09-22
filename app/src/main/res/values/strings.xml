@@ -13,4 +13,7 @@
     <string name="login_serverText">服务条款</string>
     <string name="login_text_login">登入</string>
     <string name="title_activity_home">开放学习</string>
+
+    <!-- Toolbar菜单-->
+    <string name="searchQRcode">扫一扫</string>
 </resources>

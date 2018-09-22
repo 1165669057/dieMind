@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--app内主体颜色-->
-    <color name="colorPrimary">#FF6000</color>
-    <color name="colorPrimaryDark">#FF6000</color>
-    <color name="colorAccent">#FF6000</color>
+    <color name="colorPrimary">#5AE3E0</color>
+    <color name="colorPrimaryDark">#5AE3E0</color>
+    <color name="colorAccent">#5AE3E0</color>
     <!--灰度背景-->
     <color name="grey_bg">#F3F3F3</color>
     <!--灰色按钮-->
     <color name="grey_button">#E3E3E3</color>
     <color name="lucency_color">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="whitehalf">#80FFFFFF</color>
 </resources>

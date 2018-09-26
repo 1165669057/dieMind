@@ -1,5 +1,6 @@
 package com.example.administrator.testapp.net;
 
+import com.example.administrator.testapp.bean.RegisterInfo;
 import com.example.administrator.testapp.bean.UserInfo;
 
 import java.util.Map;
@@ -18,4 +19,8 @@ public interface UserServer {
       @POST("login")
       @FormUrlEncoded
       Call<UserInfo> userLogin(@FieldMap Map<String,Object> param);
+
+      @POST("register")
+      @FormUrlEncoded
+      Call<RegisterInfo> userRegister(@FieldMap Map<String,Object> param);
 }

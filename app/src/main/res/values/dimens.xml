@@ -13,5 +13,7 @@
     <dimen name="special_big_font">18sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <!--各个activity特殊字体的大小-->
+    <dimen name="design_bottom_navigation_active_text_size">10dp</dimen>
+    <dimen name="design_bottom_navigation_text_size">10dp</dimen>
 
 </resources>

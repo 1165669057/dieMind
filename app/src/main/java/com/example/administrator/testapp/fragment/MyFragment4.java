@@ -12,16 +12,15 @@ import android.widget.Button;
 import com.example.administrator.testapp.R;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2018/9/13.
  */
 
-public class MyFragment1 extends Fragment{
+public class MyFragment4 extends Fragment{
     View mview;
-    @BindView(R.id.myfbtn1)
-    Button  myfbtn1;
+    @BindView(R.id.myfbtn4)
+    Button  myfbtn4;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +30,8 @@ public class MyFragment1 extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (mview == null) {
-            mview=inflater.inflate(R.layout.fr_layout1,container,false);
+            mview=inflater.inflate(R.layout.fr_layout4,container,false);
         }
-
         ViewGroup view = (ViewGroup) mview.getParent();
         if (view != null) {
             view.removeView(mview);

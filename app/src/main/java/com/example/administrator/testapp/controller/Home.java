@@ -12,6 +12,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -31,8 +32,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.administrator.testapp.MainActivity;
 import com.example.administrator.testapp.R;
+import com.example.administrator.testapp.adapter.HomeViewAdapter;
+import com.example.administrator.testapp.fragment.MyFragment1;
+import com.example.administrator.testapp.fragment.MyFragment2;
+import com.example.administrator.testapp.fragment.MyFragment3;
+import com.example.administrator.testapp.fragment.MyFragment4;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
 import butterknife.BindView;
@@ -51,33 +59,58 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
     NavigationView navigationView;
     @BindView(R.id.myCoordinatorLayout)
     CoordinatorLayout myCoordinatorLayout;
-
     //-------------------------------
     private boolean isDrawer=false;
+    private List<Fragment> myFragments;
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        init();
+        addTopText();
+    }
+    private void init() {
         setSupportActionBar(toolbar);//设置标题栏
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(R.mipmap.menu);//设置toobal左侧图标
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 myDrawerLayout.openDrawer(GravityCompat.START);//打开侧滑栏
-
+                myDrawerLayout.openDrawer(GravityCompat.START);//打开侧滑栏
             }
         });
-        addTopText();
         myDrawerLayout.setDrawerListener(this);//监听侧滑菜单
         myCoordinatorLayout.setOnTouchListener(this);//监听myCoordinatorLayout触摸事件
         // 判断版本号是否大于5.1 设置虚拟键盘菜单背景颜色
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
         }
+        myFragments=new ArrayList<Fragment>();
+        myFragments.add(new MyFragment1());
+        myFragments.add(new MyFragment2());
+        myFragments.add(new MyFragment3());
+        myFragments.add(new MyFragment4());
+        myViewPage.setAdapter(new HomeViewAdapter(getSupportFragmentManager(),myFragments));
+        myViewPage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void addTopText() {
        String [] topTitles={
@@ -159,10 +192,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
         myCoordinatorLayout.layout(navigationView.getRight(),0,
                 navigationView.getRight()+display.getWidth(),display.getHeight());
     }
-
     @Override
     public void onDrawerOpened(View drawerView) {
-
     }
 
     @Override
@@ -171,9 +202,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
     }
     @Override
     public void onDrawerStateChanged(int newState) {
-
+        
     }
-
     @Override
     public void onBackPressed() {
         //按返回时左边侧滑是否开启

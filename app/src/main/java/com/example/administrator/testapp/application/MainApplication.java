@@ -9,7 +9,6 @@ import retrofit2.Retrofit;
 /**
  * Created by Administrator on 2018/9/12.
  */
-
 public class MainApplication extends Application{
     private static  Retrofit retrofit;
     @Override

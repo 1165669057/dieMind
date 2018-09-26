@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.administrator.testapp.MainActivity;
 import com.example.administrator.testapp.R;
@@ -25,7 +26,6 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 public class Login extends AppCompatActivity implements View.OnClickListener,RequestResult<UserInfo>{
     @BindView(R.id.userName)
     EditText userName;
@@ -33,6 +33,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Req
     EditText pwd;
     @BindView(R.id.loginBtn)
     Button loginBtn;
+    @BindView(R.id.register)
+    TextView register;
      private UserModalImpl userModal;
     Context context;
     @Override
@@ -41,6 +43,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Req
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         loginBtn.setOnClickListener(this);
+        register.setOnClickListener(this);
         context=this;
     }
     @Override
@@ -51,7 +54,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Req
                  Map<String,Object> params=new HashMap<>();
                  String uname=userName.getEditableText().toString().trim();
                  String mpwd=pwd.getEditableText().toString().trim();
-                 if(uname.equals("")&&mpwd.equals("")){
+                 if(uname.equals("")||mpwd.equals("")){
                      Toast.makeText(context,"请输入完整信息",Toast.LENGTH_LONG).show();
                  }else{
                      params.put("uname",uname);
@@ -59,15 +62,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener,Req
                      userModal.userLogin(params,Login.this);
                  }
                 break;
+            case R.id.register:
+                Intent intent=new Intent(Login.this,Register.class);
+                startActivity(intent);
+                break;
         }
     }
     @Override
     public void onSuccess(UserInfo userInfo) {
-        Log.e("-------",userInfo.getError());
         if(userInfo.getError()==null){
-            Intent intent=new Intent(context,MainActivity.class);
+            Intent intent=new Intent(context,Home.class);
             intent.putExtra("uname",userInfo.getUname());
             startActivity(intent);
+            finish();
         }else{
             Toast.makeText(context,userInfo.getError(),Toast.LENGTH_LONG).show();
         }

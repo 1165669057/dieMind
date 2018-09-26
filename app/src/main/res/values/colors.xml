@@ -11,4 +11,7 @@
     <color name="lucency_color">#00000000</color>
     <color name="white">#ffffff</color>
     <color name="whitehalf">#80FFFFFF</color>
+    <color name="grey_deep">#cccccc</color>
+    <!-- 特舒颜色-->
+
 </resources>

@@ -9,6 +9,31 @@
  请用嘲笑来给他鼓励！欢迎大神阅读！
 通过精心的设计写下了这个抠脚的练手项目
 
+#API接口
+> /login 参数 uname、 pwd、logintime(登入时间)、sing<br>
+####json
+```json
+ {
+   error:"",
+   id:"",
+   uname:"",
+   pwd:"",
+   phone:"",
+   userimg:"",
+   money:"",
+   openid:"",
+   token:""
+ }
+```
+> /register 参数 uname、 pwd、phone、<br>
+####json
+```json
+ {
+   error:"错误提示",
+   message:"返回1注册成功"
+ }
+```  
+
 - **功能丰富** ：
 >各种简单布局
 *CoordinatorLayout*

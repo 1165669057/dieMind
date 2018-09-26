@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_public_padding"
     android:paddingRight="@dimen/activity_public_padding"
     android:paddingTop="50dp"
-    android:background="@mipmap/uu"
+    android:background="#FFFFFF"
     tools:context="com.example.administrator.testapp.controller.Login">
      <ImageView
          android:id="@+id/img_logo"
@@ -17,10 +17,12 @@
          android:background="@mipmap/openmind"
          />
     <TextView
-        app:layout_goneMarginRight="10dp"
-        android:textColor="#ffffff"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintLeft_toRightOf="@id/img_logo"
-        android:textSize="@dimen/special_big_font"
+        app:layout_constraintBottom_toBottomOf="@+id/img_logo"
+        app:layout_constraintTop_toTopOf="@+id/img_logo"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_OpenMind"
@@ -33,17 +35,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
+             android:textColor="#000000"
+            android:textColorHint="@color/grey_deep"
             android:background="@drawable/border"
             android:textSize="@dimen/public_fontSize"
             android:id="@+id/userName"
             android:hint="@string/login_hint_font"
             android:layout_width="match_parent"
             android:layout_height="@dimen/login_EditText_height" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+             android:background="@color/grey_bg"
+            />
         <EditText
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
+            android:textColor="#000000"
+            android:textColorHint="@color/grey_deep"
             style="?android:attr/textViewStyle"
             android:textSize="@dimen/public_fontSize"
             android:background="@drawable/border"
@@ -52,13 +59,19 @@
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="@dimen/login_EditText_height" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/grey_bg"
+            />
         <Button
+            android:layout_marginTop="15dp"
             android:textSize="@dimen/public_fontSize"
             android:id="@+id/loginBtn"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:textColor="#ffffff"
-            android:background="@color/colorAccent"
+            android:background="@drawable/registerbtn"
             android:text="@string/login_text_login"
             />
          <RelativeLayout

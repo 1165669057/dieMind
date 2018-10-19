@@ -43,7 +43,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     return true;
                 case R.id.navigation_buy:
                     return true;
-
             }
             return false;
         }
@@ -59,12 +58,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         BottomNavigationViewHelper.disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()){

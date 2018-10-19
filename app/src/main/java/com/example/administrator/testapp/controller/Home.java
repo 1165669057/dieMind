@@ -3,6 +3,7 @@ package com.example.administrator.testapp.controller;
 import android.annotation.SuppressLint;
 import android.content.ContentProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,27 +28,41 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 import com.example.administrator.testapp.MainActivity;
 import com.example.administrator.testapp.R;
 import com.example.administrator.testapp.adapter.HomeViewAdapter;
+import com.example.administrator.testapp.application.GlideApp;
+import com.example.administrator.testapp.application.MyAppGlideModule;
+import com.example.administrator.testapp.bean.HomeDataUser;
+import com.example.administrator.testapp.bean.UserInfo;
 import com.example.administrator.testapp.fragment.MyFragment1;
 import com.example.administrator.testapp.fragment.MyFragment2;
 import com.example.administrator.testapp.fragment.MyFragment3;
 import com.example.administrator.testapp.fragment.MyFragment4;
+import com.example.administrator.testapp.listener.RequestResult;
+import com.example.administrator.testapp.model.UserModalImpl;
+import com.example.administrator.testapp.util.ConstData;
+import com.example.administrator.testapp.util.IntentEnterUtil;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.zip.Inflater;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Home extends AppCompatActivity implements View.OnClickListener,DrawerLayout.DrawerListener,
-        View.OnTouchListener
+        View.OnTouchListener,RequestResult<HomeDataUser>
 {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -59,16 +74,24 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
     NavigationView navigationView;
     @BindView(R.id.myCoordinatorLayout)
     CoordinatorLayout myCoordinatorLayout;
+    @BindView(R.id.searchBtn)
+    Button searchBtn;
+    @BindView(R.id.fab)
+    FloatingActionButton   fab;
+    TextView nickName;
+    ImageView headImage;
     //-------------------------------
     private boolean isDrawer=false;
     private List<Fragment> myFragments;
-
+    private UserModalImpl userModal;
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        nickName=(TextView)navigationView.getHeaderView(0).findViewById(R.id.nickName);
+        headImage=(ImageView)navigationView.getHeaderView(0).findViewById(R.id.headimg);
         init();
         addTopText();
     }
@@ -97,11 +120,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
         myViewPage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                
+
             }
 
             @Override
             public void onPageSelected(int position) {
+                for (TextView curText:texts) {
+                    curText.setTextSize(16);
+                    curText.setTextColor(getResources().getColor(R.color.whitehalf));
+                }
+                texts[position].setTextSize(20);
+                texts[position].setTextColor(getResources().getColor(R.color.white));
             }
 
             @Override
@@ -109,14 +138,24 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
 
             }
         });
+        userModal=new UserModalImpl();
+        Map<String,Object> params=new HashMap();
+        Intent mIntent=getIntent();
+        params.put("id",mIntent.getStringExtra("id"));
+        params.put("loginId",mIntent.getStringExtra("loginId"));
+        params.put("token",mIntent.getStringExtra("token"));
+        userModal.getUserInfo(params,Home.this);
+        searchBtn.setOnClickListener(this);
+        fab.setOnClickListener(this);
+        headImage.setOnClickListener(this);
     }
-
+     TextView [] texts;
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void addTopText() {
        String [] topTitles={
          "说", "学","练","用"
        };
-       final TextView texts[]=new TextView[topTitles.length];
+        texts=new TextView[topTitles.length];
         Toolbar.LayoutParams lay=new Toolbar.LayoutParams(Toolbar.LayoutParams.MATCH_PARENT,Toolbar.LayoutParams.WRAP_CONTENT,1);
         LinearLayout.LayoutParams textLay=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT,1);
         LinearLayout mLinearLayout=new LinearLayout(this);
@@ -135,6 +174,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
                mText.setTextColor(getResources().getColor(R.color.white));
            }
             mLinearLayout.addView(mText);
+            final int finalI = i;
             mText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -145,6 +185,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
                     }
                     mtext.setTextSize(20);
                     mtext.setTextColor(getResources().getColor(R.color.white));
+                    myViewPage.setCurrentItem(finalI);
                 }
             });
         }
@@ -159,7 +200,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
         //按钮点击事件
         return super.onOptionsItemSelected(item);
     }
-
     @SuppressLint("RestrictedApi")
     @Override
     protected boolean onPrepareOptionsPanel(View view, Menu menu) {
@@ -178,8 +218,18 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
 
     @Override
     public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        Intent mintent;
+           switch (view.getId()){
+               case R.id.fab:
+                   break;
+               case R.id.searchBtn:
+                    mintent=new Intent(Home.this,Search.class);
+                   startActivity(mintent);
+                   break;
+               case R.id.headimg:
+                   IntentEnterUtil.showIntent(Home.this,Mine.class);
+                   break;
+           }
     }
   //---------------------------------监听侧滑事件-------------------------------
     @Override
@@ -195,14 +245,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
     @Override
     public void onDrawerOpened(View drawerView) {
     }
-
     @Override
     public void onDrawerClosed(View drawerView) {
 
     }
     @Override
     public void onDrawerStateChanged(int newState) {
-        
+
     }
     @Override
     public void onBackPressed() {
@@ -225,5 +274,25 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
         }
         return eventBool;
     }
+    @Override
+    public void onSuccess(HomeDataUser homeDataUser) {
+            if(homeDataUser.getCode()== ConstData.CODE_SUCCESS){
+                UserInfo userInfo=homeDataUser.getData().get("user");
+                nickName.setText(userInfo.getUname());
+                GlideApp.with(navigationView.getHeaderView(0)).load(userInfo.getUserimg())
+                        .placeholder(R.mipmap.openmind)
+                        .error(R.mipmap.openmind)
+                        .fallback(R.mipmap.openmind)
+                        .into(headImage);
 
+            }else if (homeDataUser.getCode()== ConstData.CODE_TIMEOVER){
+                 Intent intent=new Intent(Home.this,Login.class);
+                 startActivity(intent);
+                 finish();
+            }
+    }
+    @Override
+    public void onFailed(String msg) {
+        Log.e("----------<<<",msg);
+    }
 }

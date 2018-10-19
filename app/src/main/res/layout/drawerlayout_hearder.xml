@@ -6,50 +6,26 @@
     android:layout_width="match_parent"
     android:background="@color/colorAccent"
     android:paddingBottom="20dp"
+    android:paddingTop="20dp"
     android:layout_height="wrap_content">
-
-    <Button
-        android:background="#1BBB46"
-        android:textColor="#ffffff"
-        android:id="@+id/signIn"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="12dp"
-        android:text="打卡"
-        app:layout_goneMarginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
-    <Button
-        android:background="#1BBB46"
-        app:layout_goneMarginTop="10dp"
-        android:layout_marginTop="12dp"
-        android:textColor="#ffffff"
-        android:id="@+id/QRcode"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="二维码"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-       />
       <LinearLayout
           android:id="@+id/userlayout"
+          app:layout_constraintTop_toTopOf="parent"
           android:layout_marginStart="14dp"
           android:gravity="center_vertical"
           android:layout_marginTop="20dp"
           app:layout_constraintStart_toStartOf="parent"
           android:orientation="horizontal"
-          app:layout_constraintTop_toBottomOf="@+id/QRcode"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content">
          <ImageView
+             android:id="@+id/headimg"
              android:layout_marginRight="10dp"
              android:layout_width="30dp"
              android:background="#000000"
              android:layout_height="30dp" />
           <TextView
+              android:id="@+id/nickName"
               android:textSize="20sp"
               android:textColor="#ffffff"
               android:layout_width="wrap_content"

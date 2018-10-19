@@ -15,4 +15,11 @@
     <string name="title_activity_home">开放学习</string>
     <!-- Toolbar菜单-->
     <string name="searchQRcode">扫一扫</string>
+
+    <string name="title_activity_search">Search</string>
+    <string name="title_activity_mine">Mine</string>
+
+    <!-- Strings related to Settings -->
+
+
 </resources>

@@ -1,11 +1,11 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
 
     </style>
+
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -16,13 +16,21 @@
         <item name="windowNoTitle">true</item>
         <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
     </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="elevation">0dp</item>
     </style>
+
     <style name="OverflowButtonStyle" parent="@android:style/Widget.ActionButton.Overflow">
         <item name="android:src">@mipmap/addicon</item>
     </style>
-   <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="overlapAnchor">false</item><!--设置不要覆盖锚点-->
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>

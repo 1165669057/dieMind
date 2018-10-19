@@ -1,15 +1,14 @@
 package com.example.administrator.testapp.net;
 
-import com.example.administrator.testapp.bean.RegisterInfo;
-import com.example.administrator.testapp.bean.UserInfo;
+import com.example.administrator.testapp.bean.HomeDataUser;
+import com.example.administrator.testapp.bean.PubData;
+import com.example.administrator.testapp.bean.RegisterBeanOk;
 
 import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
-import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 
 /**
@@ -18,9 +17,12 @@ import retrofit2.http.POST;
 public interface UserServer {
       @POST("login")
       @FormUrlEncoded
-      Call<UserInfo> userLogin(@FieldMap Map<String,Object> param);
+      Call<PubData> userLogin(@FieldMap Map<String,Object> param);
 
       @POST("register")
       @FormUrlEncoded
-      Call<RegisterInfo> userRegister(@FieldMap Map<String,Object> param);
+      Call<RegisterBeanOk> userRegister(@FieldMap Map<String,Object> param);
+      @POST("getUserInfo")
+      @FormUrlEncoded
+      Call<HomeDataUser> getUserInfo(@FieldMap Map<String,Object> param);
 }

@@ -4,8 +4,8 @@ package com.example.administrator.testapp.bean;
  * Created by Administrator on 2018/9/12.
  */
 
-public class UserInfo {
-    private String error;//状态码
+public class UserInfo{
+
     private Integer id;//用户id
     private String uname;//用户名
     private String pwd;//密码
@@ -19,13 +19,6 @@ public class UserInfo {
     }
     public Integer getId() {
         return id;
-    }
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public String getError() {
-        return error;
     }
 
     public Integer getMoney() {

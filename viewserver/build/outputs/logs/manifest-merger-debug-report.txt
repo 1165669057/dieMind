@@ -1,0 +1,35 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:3:1-10:12
+INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml:3:1-10:12
+INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml:3:1-10:12
+INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml:3:1-10:12
+INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml:3:1-10:12
+INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml:3:1-10:12
+INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml:3:1-10:12
+	package
+		ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:4:7-37
+		INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml
+		INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:6:7-32
+		INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml
+		INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:3:11-69
+	android:versionCode
+		ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:5:7-30
+		INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml
+		INJECTED from D:\android_project\viewserver\src\main\AndroidManifest.xml
+uses-sdk
+ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:7:5-72
+	android:targetSdkVersion
+		ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:7:41-70
+	android:minSdkVersion
+		ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:7:15-40
+uses-permission#android.permission.INTERNET
+ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:8:5-66
+	android:name
+		ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:8:22-64
+application
+ADDED from D:\android_project\viewserver\src\main\AndroidManifest.xml:9:5-19

@@ -5,6 +5,5 @@
         android:title="@string/searchQRcode"
         android:orderInCategory="80"
         android:icon="@mipmap/qrcode"
-
        />
 </menu>

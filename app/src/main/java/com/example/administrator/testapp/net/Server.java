@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Administrator on 2018/9/12.
  */
 public class Server {
-    private static String TestHost="http://192.168.191.1:8080/openMind/";//测试服务器
+    private static String TestHost="http://192.168.31.148:8080/openMind/";//测试服务器
     private static String ImgHost="";//图片服务器
     private static Retrofit retrofit;
     public Server(){}

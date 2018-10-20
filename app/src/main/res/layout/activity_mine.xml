@@ -11,31 +11,43 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
         <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarlayout"
+            app:contentScrim="@color/colorAccent"
+            android:background="@mipmap/minebg"
             android:layout_width="match_parent"
+            app:title="wj"
+            app:scrimAnimationDuration="@android:integer/config_shortAnimTime"
+            app:titleEnabled="false"
             app:expandedTitleMarginEnd="0dp"
-            app:title="王建"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:layout_height="170dp">
-
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways"
+            android:layout_height="200dp">
             <ImageView
-                android:id="@+id/minebg"
-                android:background="@mipmap/minebg"
-                android:layout_width="match_parent"
-                android:layout_height="170dp" />
-
+                android:id="@+id/headimg"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:background="@mipmap/openmind"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
             <android.support.v7.widget.Toolbar
                 android:layout_gravity="top"
                 android:id="@+id/mineBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorAccent"
+                android:background="#00000000"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" >
+                <TextView
+                    android:id="@+id/headTitle"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:text=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/myNestedScrollView"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -227,7 +227,19 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
                    startActivity(mintent);
                    break;
                case R.id.headimg:
-                   IntentEnterUtil.showIntent(Home.this,Mine.class);
+                   if(userInfo!=null){
+                       String [] keys={
+                          "uname", "phone","userimg","money"
+                       };
+                       String values[]={
+                               userInfo.getUname(),
+                               userInfo.getPhone(),
+                               userInfo.getUserimg(),
+                               userInfo.getMoney()+""
+                       };
+                       IntentEnterUtil.showIntent(Home.this,Mine.class,keys,values);
+                   }
+
                    break;
            }
     }
@@ -274,10 +286,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener,Draw
         }
         return eventBool;
     }
+    private UserInfo userInfo;
     @Override
     public void onSuccess(HomeDataUser homeDataUser) {
             if(homeDataUser.getCode()== ConstData.CODE_SUCCESS){
-                UserInfo userInfo=homeDataUser.getData().get("user");
+                 userInfo=homeDataUser.getData().get("user");
                 nickName.setText(userInfo.getUname());
                 GlideApp.with(navigationView.getHeaderView(0)).load(userInfo.getUserimg())
                         .placeholder(R.mipmap.openmind)

@@ -43,7 +43,6 @@ public class MyAppExtension {
     public static void miniThumbSize(RequestOptions options,int size){
         options.fitCenter().override(size);
     }
-
     /**
      *
      * @param requestBuilder
@@ -59,15 +58,4 @@ public class MyAppExtension {
         requestBuilder.transition(new DrawableTransitionOptions())
                 .apply(DECODE_TYPE_GIF);
     }
-
-
-
-
-
-
-
-
-
-
-
 }

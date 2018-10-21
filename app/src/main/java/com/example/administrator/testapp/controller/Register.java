@@ -104,9 +104,10 @@ public class Register extends AppCompatActivity implements RequestResult<Registe
         progressDialog.cancel();
         Log.e("---------------->",registerBeanOk.toString());
         if(registerBeanOk.getCode()== ConstData.CODE_SUCCESS){//注册成功
-           int num=(int)registerBeanOk.getData().get("stu");
+           double num=(double)registerBeanOk.getData().get("stu");
            if(num!=0){
                Toast.makeText(this,"注册成功",Toast.LENGTH_LONG).show();
+               finish();
            }
         }else{
             Toast.makeText(this,registerBeanOk.getMessage(),Toast.LENGTH_LONG).show();

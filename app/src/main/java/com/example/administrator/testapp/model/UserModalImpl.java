@@ -1,5 +1,7 @@
 package com.example.administrator.testapp.model;
 
+import android.util.Log;
+
 import com.example.administrator.testapp.application.MainApplication;
 import com.example.administrator.testapp.bean.HomeDataUser;
 import com.example.administrator.testapp.bean.PubData;
@@ -45,9 +47,10 @@ public class UserModalImpl implements UserModal {
             @Override
             public void onResponse(Call<RegisterBeanOk> call, Response<RegisterBeanOk> response) {
                 if(response.isSuccessful()&&response.body()!=null){
+                    Log.e("------------------>>>>",response.toString());
                     rst.onSuccess(response.body());
                 }else{
-                    rst.onFailed(response.message());
+                  //  rst.onFailed(response.message());
                 }
             }
             @Override
